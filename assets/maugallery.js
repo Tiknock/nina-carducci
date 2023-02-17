@@ -121,12 +121,13 @@
     },
     prevImage() {
       let activeImage = null;
-      $("img.gallery-item").each(function() {
+      $(".gallery-item").each(function() {
         if ($(this).attr("src") === $(".lightboxImage").attr("src")) {
           activeImage = $(this);
+          console.log(activeImage.attr("src"));
         }
       });
-      let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
+      let activeTag = $(".tags-bar span.active").data("images-toggle");
       let imagesCollection = [];
       if (activeTag === "all") {
         $(".item-column").each(function() {
@@ -152,23 +153,28 @@
         if ($(activeImage).attr("src") === $(this).attr("src")) {
           index = i ;
         }
+        next =
+          imagesCollection[index - 1] ||
+          imagesCollection[imagesCollection.length - 1];
+          console.log(index);
+          console.log(next.attr("src"));
+          $(".lightboxImage").attr("src", next.attr("src"));
       });
-      next =
-        imagesCollection[index] ||
-        imagesCollection[imagesCollection.length - 1];
-      $(".lightboxImage").attr("src", $(next).attr("src"));
     },
     nextImage() {
       let activeImage = null;
-      $("img.gallery-item").each(function() {
+      $(".gallery-item").each(function() {
         if ($(this).attr("src") === $(".lightboxImage").attr("src")) {
           activeImage = $(this);
+          console.log(activeImage.attr("src"));
         }
       });
-      let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
+      let activeTag = $(".tags-bar span.active").data("images-toggle");
+      console.log(activeTag);
       let imagesCollection = [];
       if (activeTag === "all") {
         $(".item-column").each(function() {
+          console.log($(this))
           if ($(this).children("img").length) {
             imagesCollection.push($(this).children("img"));
           }
@@ -191,9 +197,11 @@
         if ($(activeImage).attr("src") === $(this).attr("src")) {
           index = i;
         }
+        next = imagesCollection[index + 1] || imagesCollection[0];
+        console.log(index);
+        console.log(next.attr("src"));
+        $(".lightboxImage").attr("src", next.attr("src"));
       });
-      next = imagesCollection[index] || imagesCollection[0];
-      $(".lightboxImage").attr("src", $(next).attr("src"));
     },
     createLightBox(gallery, lightboxId, navigation) {
       gallery.append(`<div class="modal fade" id="${
@@ -236,11 +244,11 @@
       }
     },
     filterByTag() {
-      if ($(this).hasClass("active-tag")) {
+      if ($(this).hasClass("active")) {
         return;
       }
-      $(".active-tag").removeClass("active active-tag");
-      $(this).addClass("active-tag");
+      $(".active").removeClass("active");
+      $(this).addClass("active");
 
       var tag = $(this).data("images-toggle");
 
