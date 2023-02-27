@@ -249,10 +249,15 @@ input[type="submit"] {
 	text-align: center;
 }
 .infos-container {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
 	padding: 20px;
+}
+.infos-container .fa-solid {
+	position: absolute;
+	transform: translate(-35px, 17px);
 }
 
 @media all and (max-width: 1180px) {
