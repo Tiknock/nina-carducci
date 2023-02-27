@@ -371,5 +371,9 @@ input[type="submit"] {
 	.picture {
 		width: 80%;
 	}
+	.infos-container {
+		flex-direction: column;
+		gap: 20px;;
+	}
 }
 
