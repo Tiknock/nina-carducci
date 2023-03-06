@@ -101,6 +101,7 @@ body {
 	border-radius:0 ;
 }
 .nav-pills .nav-link {
+	cursor: pointer;
 	color: #000
 }
 .item-column {
@@ -120,6 +121,7 @@ body {
 	height: 100%;
 	object-fit: cover;
 	padding: .5em;
+	cursor: pointer;
 }
 .mg-prev, .mg-next {
 	width: 30px;
